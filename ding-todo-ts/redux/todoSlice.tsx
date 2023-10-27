@@ -1,14 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-
-interface TodoState {
-  id: number,
-  text: string,
-  complete: boolean
-};
+import { TodoType } from '@/types/todo';
 
 var nextId = 0;
-const initialState: TodoState[] = [];
+const initialState: TodoType[] = [];
 
 const todoSlice = createSlice({
   name: 'todo-slice',
