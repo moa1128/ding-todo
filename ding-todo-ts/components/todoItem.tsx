@@ -12,7 +12,7 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 export default function TodoItem({ todo }: { todo: TodoType }) {
   const dispatch = useAppDispatch();
-  const [checked, setChecked] = React.useState(true);
+  const [checked, setChecked] = React.useState(false);
 
   const handleToggle = (todo: TodoType) => () => {
     dispatch(complete(todo.id));
