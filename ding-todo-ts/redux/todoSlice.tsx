@@ -23,6 +23,9 @@ const todoSlice = createSlice({
     complete(state, action: PayloadAction<number>) {
       return state.map(st => st.id === action.payload ? { ...st, complete: !st.complete } : st);
     },
+    edit(state, action: PayloadAction<TodoType>) {
+      return state.map(st => st.id === action.payload.id ? { ...st, text: action.payload.text } : st);
+    }
   },
 });
 export default todoSlice;
