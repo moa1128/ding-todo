@@ -20,5 +20,6 @@ export default function TodoTextField({ addTodo }: { addTodo: Function }) {
     value={newTodo}
     onKeyPress={handleKeyPress}
     onChange={onChangeTodo}
+    fullWidth
     placeholder="Please enter text" />;
 }

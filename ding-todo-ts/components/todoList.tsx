@@ -7,7 +7,7 @@ export default function TodoList({ todoList = [] }: {
   todoList: TodoType[]
 }) {
   return (
-    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+    <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
       {todoList && todoList.map((todo) => {
         return <TodoItem todo={todo} key={todo.id} />;
       })}
