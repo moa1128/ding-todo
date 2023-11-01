@@ -11,4 +11,4 @@ export default store;
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
-export const { add, remove, complete, edit } = todoSlice.actions;
+export const { add, remove, complete, edit, sort } = todoSlice.actions;

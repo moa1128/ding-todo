@@ -25,6 +25,9 @@ const todoSlice = createSlice({
     },
     edit(state, action: PayloadAction<TodoType>) {
       return state.map(st => st.id === action.payload.id ? { ...st, text: action.payload.text } : st);
+    },
+    sort(_, action: PayloadAction<TodoType[]>) {
+      return action.payload;
     }
   },
 });

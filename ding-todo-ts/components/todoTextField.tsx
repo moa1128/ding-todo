@@ -1,14 +1,19 @@
 import * as React from 'react';
+import { useAppDispatch } from "@/redux/hooks";
+import { add } from "@/redux/store";
+import Box from '@mui/material/Box';
 import OutlinedInput from '@mui/material/OutlinedInput';
+import TodoMenuButton from './todoMenuButton';
 
-const initialValue = "";
-export default function TodoTextField({ addTodo }: { addTodo: Function }) {
-  const [newTodo, setNewTodo] = React.useState(initialValue);
+const INIT_VALUE = "";
+export default function TodoTextField({ handleListBySort, handleListByVisible }: { handleListBySort: Function; handleListByVisible: Function }) {
+  const dispatch = useAppDispatch();
+  const [newTodo, setNewTodo] = React.useState(INIT_VALUE);
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
-      addTodo(newTodo);
-      setNewTodo(initialValue);
+      dispatch(add(newTodo));
+      setNewTodo(INIT_VALUE);
     }
   }
 
@@ -16,10 +21,15 @@ export default function TodoTextField({ addTodo }: { addTodo: Function }) {
     setNewTodo(e.target.value);
   }
 
-  return <OutlinedInput
-    value={newTodo}
-    onKeyPress={handleKeyPress}
-    onChange={onChangeTodo}
-    fullWidth
-    placeholder="Please enter text" />;
+  return (
+    <Box component={"span"}>
+      <OutlinedInput
+        value={newTodo}
+        onKeyPress={handleKeyPress}
+        onChange={onChangeTodo}
+        sx={{ width: "calc(100% - 40px)" }}
+        placeholder="Please enter text" />
+      <TodoMenuButton handleListBySort={handleListBySort} handleListByVisible={handleListByVisible} />
+    </Box>
+  );
 }
