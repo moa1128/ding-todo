@@ -8,12 +8,15 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InputBase from '@mui/material/InputBase';
 import Checkbox from '@mui/material/Checkbox';
+import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
+import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import IconButton from '@mui/material/IconButton';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import { grey } from '@mui/material/colors';
 
 export default function TodoItem({ todo }: { todo: TodoType }) {
   const dispatch = useAppDispatch();
-  const [checked, setChecked] = React.useState(false);
+  const [checked, setChecked] = React.useState(todo.complete);
   const ref = React.useRef();
   const [text, setText] = React.useState(todo.text);
 
@@ -51,15 +54,20 @@ export default function TodoItem({ todo }: { todo: TodoType }) {
             checked={checked}
             tabIndex={-1}
             onClick={handleToggle(todo)}
+            icon={<RadioButtonUncheckedIcon />}
+            checkedIcon={<RadioButtonCheckedIcon />}
+            color='default'
             disableRipple
           />
         </ListItemIcon>
-        <ListItemText id={todo.id.toString()} primary={<InputBase
-          inputRef={ref}
-          value={text}
-          onKeyPress={handleKeyPress}
-          onChange={onChangeTodo}
-          fullWidth />} />
+        <ListItemText id={todo.id.toString()}
+          primary={<InputBase
+            inputRef={ref}
+            value={text}
+            onKeyPress={handleKeyPress}
+            onChange={onChangeTodo}
+            sx={{ color: todo.complete ? grey[400] : "" }}
+            fullWidth />} />
       </ListItemButton>
     </ListItem>
   )
