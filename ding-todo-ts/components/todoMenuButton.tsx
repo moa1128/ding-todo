@@ -33,7 +33,7 @@ export default function TodoMenuButton({ handleListBySort, handleListByVisible }
 
   const SortMenuItem = ({ id }: { id: string }) => {
     const getSortText = (id: string) => {
-      return id === "date" ? "최신순" : "제목순";
+      return id === "date" ? "생성일" : "제목순";
     }
 
     const handleSort = (e: React.MouseEvent<HTMLElement>) => {
